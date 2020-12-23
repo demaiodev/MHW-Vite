@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "html.format.wrapAttributes": "force-aligned",
+  "javascript.format.semicolons": "remove",
+  "typescript.format.semicolons": "remove"
+}
