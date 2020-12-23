@@ -131,11 +131,7 @@
   </nav>
 </template>
 <script>
-import { genericGet } from '../services'
 export default {
-  name: 'NavBar',
-  mounted() {
-    genericGet('monsters')
-  }
+  name: 'NavBar'
 }
 </script>

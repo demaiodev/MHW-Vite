@@ -10,8 +10,12 @@
           v-else
           class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5"
         >
-          <!-- <Monsters v-for="(monster, i) inallMonsters.data" :key="i" :src="monster" /> -->
-          <Card />
+          <Card
+            v-for="(monster, i) in monsters"
+            :key="i"
+            :name="monster.name"
+            :image="monster.path"
+          />
         </div>
       </div>
     </div>
@@ -21,14 +25,22 @@
 import Card from '../components/Card.vue'
 import Spinner from '../components/Spinner.vue'
 
+import { getAllMonsters } from '../services'
+
 export default {
   name: 'Home',
   components: { Card, Spinner },
   data() {
     return {
       error: false,
-      loading: false
+      loading: false,
+      monsters: []
     }
+  },
+  mounted() {
+    getAllMonsters().then(monsters => {
+      this.monsters = monsters
+    })
   }
 }
 </script>
