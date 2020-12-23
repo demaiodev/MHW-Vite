@@ -135,7 +135,7 @@ import { genericGet } from '../services'
 export default {
   name: 'NavBar',
   mounted() {
-    genericGet('monsters/1')
+    genericGet('monsters')
   }
 }
 </script>
