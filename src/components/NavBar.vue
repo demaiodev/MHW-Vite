@@ -75,7 +75,7 @@
               <a
                 href="#"
                 class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                >Test 1</a
+                >Monsters</a
               >
               <a
                 href="#"
