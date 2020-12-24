@@ -25,7 +25,7 @@
 import Card from '../components/Card.vue'
 import Spinner from '../components/Spinner.vue'
 
-import { getAllMonsters } from '../services'
+import { getMonsters } from '../services'
 
 export default {
   name: 'Home',
@@ -38,7 +38,7 @@ export default {
     }
   },
   mounted() {
-    getAllMonsters().then(monsters => {
+    getMonsters().then(monsters => {
       this.monsters = monsters
     })
   }
