@@ -4,7 +4,9 @@
     class="tooltip w-8 h-8 m-2 border transform hover:scale-125 motion-reduce:transform-none shadow-md"
   >
     <img :src="getIconPath" :alt="source" />
-    <p class="tooltip-text bg-green-100 rounded p-3 -mt-16 -mr-12">
+    <p
+      class="tooltip-text bg-gray-800 text-gray-300 text-xs rounded p-3 -mt-12` -mr-12"
+    >
       {{ source }}
     </p>
   </button>
