@@ -12,6 +12,7 @@
   </button>
 </template>
 <script>
+import { computed } from 'vue'
 import { iconMap } from '../maps/icon-map'
 
 export default {
@@ -19,11 +20,12 @@ export default {
   props: {
     source: String
   },
-  computed: {
-    getIconPath() {
-      const icon = iconMap.find(element => element.name === this.source)?.path
+  setup(props) {
+    const getIconPath = computed(() => {
+      const icon = iconMap.find(element => element.name === props.source)?.path
       if (icon) return `/assets/icons/${icon}`
-    }
+    })
+    return { getIconPath }
   }
 }
 </script>

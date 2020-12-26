@@ -140,15 +140,13 @@
 import { ref } from 'vue'
 export default {
   name: 'NavBar',
-  data() {
-    return {
-      menuOpen: false
+  setup() {
+    const menuOpen = ref(false)
+
+    const toggleMenu = () => {
+      menuOpen.value = !menuOpen.value
     }
-  },
-  methods: {
-    toggleMenu() {
-      this.menuOpen = !this.menuOpen
-    }
+    return { toggleMenu, menuOpen }
   }
 }
 </script>
