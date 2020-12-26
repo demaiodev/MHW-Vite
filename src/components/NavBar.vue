@@ -47,6 +47,7 @@
         <div class="-mr-2 flex md:hidden">
           <!-- Mobile menu button -->
           <button
+            @click="toggleMenu"
             class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
           >
             <span class="sr-only">Open main menu</span>
@@ -100,7 +101,7 @@
 
       Open: "block", closed: "hidden"
     -->
-    <div class="block md:hidden">
+    <div :class="['md:hidden', menuOpen ? 'block' : 'hidden']">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <a
           href="#"
@@ -134,15 +135,20 @@
       </div>
     </div>
   </nav>
-
-  <header class="bg-white shadow">
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold leading-tight text-gray-900">Monsters</h1>
-    </div>
-  </header>
 </template>
 <script>
+import { ref } from 'vue'
 export default {
-  name: 'NavBar'
+  name: 'NavBar',
+  data() {
+    return {
+      menuOpen: false
+    }
+  },
+  methods: {
+    toggleMenu() {
+      this.menuOpen = !this.menuOpen
+    }
+  }
 }
 </script>

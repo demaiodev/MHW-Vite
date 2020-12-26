@@ -35,9 +35,11 @@ export default {
     }
   },
   mounted() {
+    this.loading = true
     getMonsters().then(monsters => {
       // we'll do something else with small monsters later
       this.monsters = monsters.filter(monster => monster.type === Size.Large)
+      this.loading = false
     })
   }
 }

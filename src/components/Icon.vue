@@ -1,7 +1,7 @@
 <template>
   <button
     v-if="getIconPath"
-    class="w-8 h-8 m-2 border transform hover:scale-110 motion-reduce:transform-none"
+    class="w-8 h-8 m-2 border transform hover:scale-110 motion-reduce:transform-none shadow-md"
   >
     <img :src="getIconPath" :alt="source" />
   </button>
@@ -12,9 +12,7 @@ import { iconMap } from '../maps/icon-map'
 export default {
   name: 'Icon',
   props: {
-    source: {
-      type: String
-    }
+    source: String
   },
   computed: {
     getIconPath() {

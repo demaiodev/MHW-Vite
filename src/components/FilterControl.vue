@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center">
+  <div class="flex items-center border shadow-md">
     <strong class="text-xl">Sort:</strong>
     <!-- Elements -->
     <Icon v-for="element in elements" :key="element" :source="element" />

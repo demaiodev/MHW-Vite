@@ -16,8 +16,10 @@ export default {
     }
   },
   mounted() {
+    this.loading = true
     getWeapons().then(weapons => {
       this.weapons = weapons
+      this.loading = false
     })
   }
 }
