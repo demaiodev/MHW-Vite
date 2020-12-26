@@ -5,11 +5,21 @@
       <div class="flex flex-col">
         <div class="flex items-center">
           <strong>Element:</strong>
-          <Icon v-for="element in elements" :key="element" :source="element" />
+          <Icon
+            v-for="element in elements"
+            :key="element"
+            :source="element"
+            @click="handleFilter(element)"
+          />
         </div>
         <div class="flex items-center">
           <strong>Ailment:</strong>
-          <Icon v-for="ailment in ailments" :key="ailment" :source="ailment" />
+          <Icon
+            v-for="ailment in ailments"
+            :key="ailment"
+            :source="ailment"
+            @click="handleFilter(ailment)"
+          />
         </div>
       </div>
     </div>
@@ -25,14 +35,18 @@ import { Ailment } from '../models/enums/Ailment'
 export default {
   name: 'FilterControl',
   components: { Icon },
-  setup() {
+  setup(_, { emit }) {
     const elements = ref([])
     const ailments = ref([])
     onMounted(() => {
       elements.value = Object.values(Element)
       ailments.value = Object.values(Ailment)
     })
-    return { elements, ailments }
+    const handleFilter = type => {
+      console.log('working', type)
+      emit('filter', type)
+    }
+    return { elements, ailments, handleFilter }
   }
 }
 </script>

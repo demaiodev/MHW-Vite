@@ -5,7 +5,7 @@
   >
     <img :src="getIconPath" :alt="source" />
     <p
-      class="tooltip-text bg-gray-800 text-gray-300 text-xs rounded p-3 -mt-12` -mr-12"
+      class="tooltip-text bg-gray-800 text-gray-300 text-xs rounded p-3 -mt-12 -mr-12"
     >
       {{ source }}
     </p>

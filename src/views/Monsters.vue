@@ -21,6 +21,7 @@
 import Card from '../components/Card.vue'
 import Spinner from '../components/Spinner.vue'
 import FilterControl from '../components/FilterControl.vue'
+import { onMounted, ref } from 'vue'
 
 import { getMonsters } from '../services'
 import { Size } from '../models/enums/Size'
@@ -28,19 +29,21 @@ import { Size } from '../models/enums/Size'
 export default {
   name: 'Monsters',
   components: { Card, Spinner, FilterControl },
-  data() {
-    return {
-      loading: false,
-      monsters: []
-    }
-  },
-  mounted() {
-    this.loading = true
-    getMonsters().then(monsters => {
-      // we'll do something else with small monsters later
-      this.monsters = monsters.filter(monster => monster.type === Size.Large)
-      this.loading = false
+  setup() {
+    const loading = ref(false)
+    const monsters = ref([])
+    onMounted(() => {
+      loading.value = true
+      getMonsters().then(allMonsters => {
+        // we'll do something else with small monsters later
+        monsters.value = allMonsters.filter(
+          monster => monster.type === Size.Large
+        )
+        loading.value = false
+      })
     })
+
+    return { loading, monsters }
   }
 }
 </script>
