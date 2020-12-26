@@ -46,7 +46,7 @@ const getSpecific = async (endpoint: Endpoint, param: number | string) => {
 
 const mapMonsters = async (monsters: Monster[]) => {
   const mapped = monsters.map((monster: Monster) => {
-    monster.path = `/public/assets/monster-images/${
+    monster.path = `/assets/monster-images/${
       monsterMap.find(map => monster.id === map.id).path
     }`
     return monster

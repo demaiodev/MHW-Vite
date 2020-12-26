@@ -1,18 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Monsters from '../views/Monsters.vue'
+import Weapons from '../views/Weapons.vue'
+import Armor from '../views/Armor.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    name: 'monsters',
+    component: Monsters
+  },
+  {
+    path: '/weapons',
+    name: 'weapons',
+    component: Weapons
+  },
+  {
+    path: '/armor',
+    name: 'armor',
+    component: Armor
   }
-  // {
-  //   path: '/playlists',
-  //   name: 'playlists',
-  //   props: true,
-  //   component: somethin
-  // }
 ]
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
