@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-white rounded-lg border shadow-xl">
+  <div
+    class="bg-white rounded-lg border shadow-xl transform hover:scale-105 motion-reduce:transform-none"
+  >
     <h1 class="font-bold text-lg text-center text-gray-700">
       {{ source.name }}
     </h1>

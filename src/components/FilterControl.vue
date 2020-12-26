@@ -1,10 +1,18 @@
 <template>
-  <div class="flex items-center border shadow-md">
-    <strong class="text-xl">Sort:</strong>
-    <!-- Elements -->
-    <Icon v-for="element in elements" :key="element" :source="element" />
-    <!-- Ailments -->
-    <Icon v-for="ailment in ailments" :key="ailment" :source="ailment" />
+  <strong class="text-xl">Filters</strong>
+  <div class="flex items-center border shadow-md p-2">
+    <div>
+      <div class="flex flex-col">
+        <div class="flex items-center">
+          <strong>Element:</strong>
+          <Icon v-for="element in elements" :key="element" :source="element" />
+        </div>
+        <div class="flex items-center">
+          <strong>Ailment:</strong>
+          <Icon v-for="ailment in ailments" :key="ailment" :source="ailment" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>

@@ -1,9 +1,12 @@
 <template>
   <button
     v-if="getIconPath"
-    class="w-8 h-8 m-2 border transform hover:scale-110 motion-reduce:transform-none shadow-md"
+    class="tooltip w-8 h-8 m-2 border transform hover:scale-125 motion-reduce:transform-none shadow-md"
   >
     <img :src="getIconPath" :alt="source" />
+    <p class="tooltip-text bg-green-100 rounded p-3 -mt-16 -mr-12">
+      {{ source }}
+    </p>
   </button>
 </template>
 <script>
@@ -23,4 +26,15 @@ export default {
 }
 </script>
 <style scoped>
+.tooltip .tooltip-text {
+  visibility: hidden;
+  text-align: center;
+  padding: 2px 6px;
+  position: absolute;
+  z-index: 100;
+}
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  text-transform: capitalize;
+}
 </style>
