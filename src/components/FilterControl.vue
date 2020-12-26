@@ -16,6 +16,7 @@
   </div>
 </template>
 <script>
+import { onMounted, ref } from 'vue'
 import Icon from '../components/Icon.vue'
 
 import { Element } from '../models/enums/Element'
@@ -24,17 +25,15 @@ import { Ailment } from '../models/enums/Ailment'
 export default {
   name: 'FilterControl',
   components: { Icon },
-  data() {
-    return {
-      elements: [],
-      ailments: []
-    }
-  },
-  mounted() {
-    this.elements = Object.values(Element)
-    this.ailments = Object.values(Ailment)
+  setup() {
+    const elements = ref([])
+    const ailments = ref([])
+    onMounted(() => {
+      elements.value = Object.values(Element)
+      ailments.value = Object.values(Ailment)
+    })
+    return { elements, ailments }
   }
 }
 </script>
-<style scoped>
-</style>
+<style scoped></style>
