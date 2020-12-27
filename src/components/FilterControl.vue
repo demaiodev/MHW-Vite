@@ -9,7 +9,7 @@
             v-for="element in elements"
             :key="element"
             :source="element"
-            @click="handleFilter(element)"
+            @click="handleFilter({ filter: element, type: 'element' })"
           />
         </div>
         <div class="flex items-center">
@@ -18,7 +18,7 @@
             v-for="ailment in ailments"
             :key="ailment"
             :source="ailment"
-            @click="handleFilter(ailment)"
+            @click="handleFilter({ filter: ailment, type: 'ailment' })"
           />
         </div>
       </div>
@@ -35,6 +35,7 @@ import { Ailment } from '../models/enums/Ailment'
 export default {
   name: 'FilterControl',
   components: { Icon },
+  emits: ['filter'],
   setup(_, { emit }) {
     const elements = ref([])
     const ailments = ref([])
@@ -42,9 +43,8 @@ export default {
       elements.value = Object.values(Element)
       ailments.value = Object.values(Ailment)
     })
-    const handleFilter = type => {
-      console.log('working', type)
-      emit('filter', type)
+    const handleFilter = payload => {
+      emit('filter', payload)
     }
     return { elements, ailments, handleFilter }
   }

@@ -6,7 +6,7 @@
           <div><Spinner /></div>
         </div>
         <template v-else>
-          <FilterControl />
+          <FilterControl @filter="handleFilter" />
           <div
             class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5"
           >
@@ -17,35 +17,42 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import Card from '../components/Card.vue'
 import Spinner from '../components/Spinner.vue'
 import FilterControl from '../components/FilterControl.vue'
-import { onMounted, ref } from 'vue'
-
-import { getMonsters } from '../services'
+import { ref, inject, onMounted, watch, defineComponent, Ref } from 'vue'
+import { fetchMonsters } from '../services'
 import { Size } from '../models/enums/Size'
+import Monster from '../models/interfaces/Monster'
 
-export default {
+export default defineComponent({
   name: 'Monsters',
   components: { Card, Spinner, FilterControl },
   setup() {
-    const loading = ref(false)
-    const monsters = ref([])
-    onMounted(() => {
-      loading.value = true
-      getMonsters().then(allMonsters => {
-        // we'll do something else with small monsters later
-        monsters.value = allMonsters.filter(
-          monster => monster.type === Size.Large
-        )
-        loading.value = false
-      })
-    })
+    const getMonsters = inject('monsters')
+    const loading = inject('loading')
 
-    return { loading, monsters }
+    let monsters: Ref<Monster[]> = ref([])
+
+    const setMonsters = () => {
+      monsters.value = getMonsters()
+    }
+    watch(
+      () => loading.value,
+      () => setMonsters(),
+      { immediate: true }
+    )
+    const handleFilter = (payload: {
+      filter: string
+      type: 'element | ailment'
+    }) => {
+      console.log(payload)
+    }
+
+    return { loading, monsters, handleFilter }
   }
-}
+})
 </script>
 <style scoped>
 .loading-box {

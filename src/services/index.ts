@@ -29,7 +29,7 @@ const getArmor = async () => {
   return armor
 }
 
-const getMonsters = async () => {
+const fetchMonsters = async () => {
   const monsters = await getAll(Endpoint.Monsters)
   return mapMonsters(monsters)
 }
@@ -54,4 +54,4 @@ const mapMonsters = async (monsters: Monster[]) => {
   return mapped
 }
 
-export { getAilments, getArmor, getMonsters, getWeapons, getSpecific }
+export { getAilments, getArmor, fetchMonsters, getWeapons, getSpecific }
